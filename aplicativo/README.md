@@ -18,3 +18,8 @@ Google Maps Trace Route + Login + Capturing Info
 * 7- Desfrute do app.
 * 8- Ou acesse pelo
 
+
+# Tecnologias Chatbot
+* Python
+* Machine Learning (Chatbot module)
+
