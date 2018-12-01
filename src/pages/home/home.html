@@ -1,0 +1,41 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Início</ion-title>
+  </ion-navbar>
+</ion-header>
+
+  <ion-content padding>
+  <ion-card>
+    <ion-card-header >
+      <ion-row justify-content-between>
+        <ion-title class="linha">LINHA 9653-10</ion-title>
+        <ion-icon name="star" id="star"></ion-icon>
+      </ion-row>
+    </ion-card-header>
+    <ion-card-content class="sentido">
+      Sentido: Pedra Branca - Pça. do Correio
+    </ion-card-content>
+</ion-card>
+  <ion-toolbar>
+    <ion-searchbar [(ngModel)]="queries.searchPosition" (ionInput)="searchPlace('searchPosition')" (touchstart)="clearSearchBar('searchPosition')"></ion-searchbar>
+  </ion-toolbar>
+
+  <ion-list style="position: relative;">
+    <ion-item class="place-result" *ngFor="let place of places.searchPosition" (touchstart)="selectPlace(place,'searchPosition')">{{place.description}}</ion-item>
+  </ion-list>
+
+  <div #pleaseConnect id="please-connect">
+    <p>Please connect to the Internet...</p>
+  </div>
+
+  <div #map id="map">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-row justify-content-center>
+    <ion-icon id="start-button" name="add-circle" (click)="addAlert()"></ion-icon>
+  </ion-row>
+
+</ion-content>

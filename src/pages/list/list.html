@@ -1,0 +1,32 @@
+<ion-header>
+  <ion-row>
+    <button id="closeModal" ion-button icon-only (click)="closeModal()">
+      <ion-icon name="close"></ion-icon>
+    </button>
+    <ion-title>Histórico</ion-title>
+  </ion-row>
+</ion-header>
+
+<ion-content>
+  <ion-card ion-item *ngFor="let alert of staticReports">
+    <ion-card-content>
+      <div *ngIf="alert.type == 'audio'">
+        <audio controls>
+          <source src="{{ alert.media_path }}">
+        </audio>
+      </div>
+      <div *ngIf="alert.type == 'image'">
+        <img src="{{ alert.media_path }}"/>
+      </div>
+      <ion-row justify-content-between>
+        <span class="line">Linha: {{alert.line }}</span>
+        <span>Nº Veículo: {{ alert.num_car }}</span>
+      </ion-row>
+      <div>Sentido: {{ alert.direction }}</div>
+      <div>{{ alert.description }}</div>
+      <ion-row justify-content-end>
+        <span style="color: gray;">{{ alert.hour }}</span>
+      </ion-row>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

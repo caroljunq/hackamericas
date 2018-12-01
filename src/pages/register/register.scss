@@ -1,0 +1,30 @@
+page-register {
+  #closeModal{
+    background: none;
+    padding: 0;
+    color: #4b4b4b;
+    border: none;
+    box-shadow: none;
+  }
+
+  ion-header{
+    background: #ef9217 !important;
+  }
+
+  ion-title{
+    text-align: center;
+  }
+
+  .anexos{
+    ion-icon{
+      font-size: 3.4rem !important;
+      color:#53443b;
+    }
+  }
+
+  #report{
+    border-radius: 4px;
+    font-size: 1.7rem;
+    padding: 8px;
+  }
+}
