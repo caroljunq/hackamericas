@@ -98,13 +98,19 @@ export class GoogleMapsProvider {
 
         let mapOptions = {
           center: latLng,
-          zoom: 15,
+          zoom: 11,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         }
 
         this.map = new google.maps.Map(this.mapElement, mapOptions);
-        resolve(true);
 
+        let marker = new google.maps.Marker({
+          position: latLng,
+          map: this.map,
+          icon:'/../../assets/icon/gps-marker.png'
+        });
+
+        resolve(true);
       });
 
     });
@@ -149,9 +155,7 @@ export class GoogleMapsProvider {
     });
 
     this.connectivityService.watchOffline().subscribe(() => {
-
       this.disableMap();
-
     });
 
   }

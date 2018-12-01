@@ -21,20 +21,17 @@ export class HomePage {
   longitude: number;
   autocompleteService: any;
   placesService: any;
-  // query: string = '';
   places: any  = {
     searchPosition: [],
     originPosition:  [],
     destinationPosition: []
   };
   searchDisabled: boolean;
-  // saveDisabled: boolean;
   location: any;
 
   directionsService: any;
   directionsDisplay: any;
-  // originPosition: string = '';
-  // destinationPosition: string = '';
+
   currentPosition: any;
   currentMarker: any;
   traceRoute: boolean = false;
@@ -70,9 +67,9 @@ export class HomePage {
 
 currentPositionMarker: any;
 
+
   constructor(public modalCtrl: ModalController, public navCtrl: NavController, public zone: NgZone, public maps: GoogleMapsProvider, public platform: Platform, public geolocation: Geolocation, public viewCtrl: ViewController) {
     this.searchDisabled = true;
-    // this.saveDisabled = true;
   }
 
   ionViewDidLoad() {
@@ -83,19 +80,12 @@ currentPositionMarker: any;
       this.placesService = new google.maps.places.PlacesService(this.maps.map);
       this.searchDisabled = false;
 
-      this.currentMarker = new google.maps.Marker({ map: this.maps.map});
-
-      this.addStaticMarkers();
-      this.showCurrentLocation();
-
       this.directionsService = new google.maps.DirectionsService();
       this.directionsDisplay = new google.maps.DirectionsRenderer();
       this.directionsDisplay.setMap(this.maps.map);
-      // this.displayDirection(this.directionsService, this.directionsDisplay);
+      this.addStaticMarkers();
     });
   }
-
-
 
   // implementa dados estáticos (marcadores)
   addStaticMarkers(){
@@ -113,8 +103,6 @@ currentPositionMarker: any;
   }
 
   searchPlace(option) {
-    // this.saveDisabled = true;
-
     if (this.queries[option].length > 0 && !this.searchDisabled) {
 
       let config = {
@@ -168,46 +156,23 @@ currentPositionMarker: any;
             lat: location.lat,
             lng: location.lng
           });
-
-          this.currentMarker.setPosition(position);
+          if(this.currentMarker){
+            this.currentMarker.setPosition(null);
+            this.currentMarker.setPosition(location);
+          }else{
+            this.currentMarker = new google.maps.Marker({
+              position: position,
+              map: this.maps.map,
+            });
+          }
         }
         this.location = location;
       });
     });
   }
 
-  getCurrentPosition(){
-    return new Promise((resolve, reject) => {
-      this.geolocation.getCurrentPosition()
-        .then((resp) => {
-          this.currentPosition = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-          resolve(resp);
-        })
-        .catch((error) => {
-          reject(error);
-        });
-    });
-  }
-
   clearSearchBar(){
     this.queries.searchPosition = '';
-  }
-
-  showCurrentLocation(){
-    this.getCurrentPosition()
-      .then((resp) =>{
-        let position = new google.maps.LatLng(resp.coords.latitude, resp.coords.longitude);
-        let marker = new google.maps.Marker({
-          position: position,
-          map: this.maps.map,
-          icon:'/../../assets/icon/gps-marker.png'
-        });
-        this.maps.map.setCenter(position);
-        this.maps.map.setZoom(15);
-      })
-      .catch((err) =>{
-        console.log(err);
-      })
   }
 
   displayDirection() {
