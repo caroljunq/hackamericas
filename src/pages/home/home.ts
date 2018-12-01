@@ -85,8 +85,8 @@ currentPositionMarker: any;
 
       this.currentMarker = new google.maps.Marker({ map: this.maps.map});
 
-        this.addStaticMarkers();
-        this.showCurrentLocation();
+      this.addStaticMarkers();
+      this.showCurrentLocation();
 
       this.directionsService = new google.maps.DirectionsService();
       this.directionsDisplay = new google.maps.DirectionsRenderer();
@@ -203,7 +203,7 @@ currentPositionMarker: any;
           icon:'/../../assets/icon/gps-marker.png'
         });
         this.maps.map.setCenter(position);
-        this.maps.map.setZoom(17);
+        this.maps.map.setZoom(15);
       })
       .catch((err) =>{
         console.log(err);
