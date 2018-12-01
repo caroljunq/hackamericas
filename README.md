@@ -6,6 +6,7 @@ Google Maps Trace Route + Login + Capturing Info
 * Ionic 4
 * Angular
 * Typescript
+* Google Maps API
 
 # Como instalar e executar o app
 * 1- Instale o nodejs https://nodejs.org/en/
