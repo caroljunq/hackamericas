@@ -9,6 +9,11 @@ import { Geolocation } from '@ionic-native/geolocation';
   and Angular DI.
 */
 
+// <!-- % fontes/referencias/sites/bases -->
+// <!-- https://market.ionicframework.com/starters/ionic-3---google-maps,-autocomplete,-marker-cluster
+// https://github.com/danielehrhardt/Ionic-2-Google-Maps-Marker-Cluster
+// https://github.com/ramsatt/Ionic-3---Google-Map-Auto-Complete-Search -->
+
 @Injectable()
 export class GoogleMapsProvider {
 
