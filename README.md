@@ -16,7 +16,6 @@ Google Maps Trace Route + Login + Capturing Info
 * 5- npm install (comando)
 * 6- ionic serve
 * 7- Desfrute do app.
-* 8- Ou acesse pelo
 
 
 # Tecnologias Chatbot
